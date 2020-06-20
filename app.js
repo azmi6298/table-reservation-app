@@ -2,11 +2,14 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const ordersRoute = require('./routes/orders');
 require('dotenv/config');
 
+// use body-parser
 app.use(bodyParser.json());
 
-const ordersRoute = require('./routes/orders');
+// create middleware
+app.use('/orders', ordersRoute);
 
 // connect to DB
 mongoose.connect(
@@ -17,10 +20,4 @@ mongoose.connect(
   } 
 );
 
-// create middleware
-app.use('/orders', ordersRoute);
-
-app.get('/', (req, res) => {
-  
-});
 app.listen(5000);
