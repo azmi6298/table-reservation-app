@@ -5,10 +5,10 @@ const bodyParser = require('body-parser');
 const ordersRoute = require('./routes/orders');
 require('dotenv/config');
 
-// use body-parser
+// to parse HTTP request
 app.use(bodyParser.json());
 
-// create middleware
+// for routing
 app.use('/orders', ordersRoute);
 
 // connect to DB
