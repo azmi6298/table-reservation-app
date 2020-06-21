@@ -18,7 +18,7 @@ router.get('/:orderId', async(req, res) => {
     const order = await Order.findById(req.params.orderId)
     res.json(order);
   } catch (error) {
-    res.json({ message: error});
+    res.status(404).json({ message: `Order with ID ${req.params.orderId} not found`});
   }
 });
 
@@ -36,9 +36,9 @@ router.post('/', async(req, res) => {
 
   try {
     const savedOrder = await order.save();
-    res.json(savedOrder);
+    res.status(201).json(savedOrder);
   } catch (error) {
-    res.json({ message: error});
+    res.json({ message: error });
   }
 });
 
@@ -71,7 +71,7 @@ router.delete('/:orderId', async(req, res) => {
     const removedOrder = await Order.remove({_id: req.params.orderId});
     res.json(removedOrder);
   } catch (error) {
-    res.json({ message: error });
+    res.status(404).json({ message: `Order with ID ${req.params.orderId} not found`});
   }
 });
 
