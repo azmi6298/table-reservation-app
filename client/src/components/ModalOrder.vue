@@ -1,37 +1,35 @@
 <template>
-  <div>
-    <modal name="modal-order" @before-open="beforeOpen" @opened="opened">
-     <form @submit.prevent="onSubmit">
-      <h1>{{ showTableName }}</h1>
-      <div class="form-group">
+  <div class="text-gray-900">
+    <modal name="modal-order" :width="600" :height="700" @before-open="beforeOpen" @opened="opened">
+     <form @submit.prevent="onSubmit" class="p-4 space-y-5">
+      <p class="text-2xl mb-4">{{ showTableName }}</p>
+      <div class="form-group flex flex-col">
         <label for="customer-name">Table</label>
-        <input type="text" v-model.lazy="order.table_name" @keydown.shift.tab.prevent="" ref="table_name">
+        <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.table_name" @keydown.shift.tab.prevent="" ref="table_name" />
       </div>
-      <div class="form-group">
+      <div class="form-group flex flex-col">
         <label for="customer-name">Order Code</label>
-        <input type="text" v-model.lazy="order.code" @keydown.shift.tab.prevent="">
+        <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.code" @keydown.shift.tab.prevent="" />
       </div>
-      <div class="form-group">
+      <div class="form-group flex flex-col">
         <label for="customer-name">Customer Name</label>
-        <input type="text" v-model.lazy="order.customer_name">
+        <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.customer_name" />
       </div>
-      <div class="form-group">
+      <div class="form-group flex flex-col">
         <label for="employee-name">Employee Name</label>
-        <input type="text" v-model.lazy="order.employee_name">
+        <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.employee_name" />
       </div>
-      <div class="form-group">
+      <div class="form-group flex flex-col">
         <label for="menu-name">Menu to Order</label>
-        <input type="text" v-model.lazy="order.menu_name">
+        <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.menu_name" />
       </div>
-      <div class="form-group">
+      <div class="form-group flex flex-col">
         <label for="quantity">Quantity</label>
-        <input type="text" v-model.lazy="order.quantity_ordered">
+        <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.quantity_ordered" />
       </div>
-      <div class="form-group">
-        <button type="submit">Save</button>
-      </div>
-      <div class="form-group">
-        <button @keydown.tab.exact.prevent="" @click.prevent="removeReservation" v-if="order._id != undefined">Delete</button>
+      <div class="form-group flex flex-row justify-center space-x-10">
+        <t-button variant="primary" size="sm" type="submit">Save</t-button>
+        <t-button variant="danger"  size="sm" @keydown.tab.exact.prevent="" @click.prevent="removeReservation" v-if="order._id != undefined">Delete</t-button>
       </div>
      </form>
     </modal>
