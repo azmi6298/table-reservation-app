@@ -15,11 +15,12 @@ npm run serve
 ```
 
 ## Things to do
-- [ ] Implement API Auth
 - [x] Implement Frontend (VueJS)
+- [ ] Implement CSS with TailwindCSS
 - [ ] Implement Advanced Search
 - [ ] Implement History
 - [ ] Implement Order Calculator
+- [ ] Implement API Auth
 - [ ] Implement Login
 - [ ] Implement RBAC + Admin Control Panel
 
