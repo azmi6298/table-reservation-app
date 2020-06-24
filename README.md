@@ -9,11 +9,14 @@ npm install
 
 # to run ExpressJS server on port 5000, but you can change it in app.js
 npm start
+
+# to run VueJS
+npm run serve
 ```
 
 ## Things to do
 - [ ] Implement API Auth
-- [ ] Implement Frontend (VueJS)
+- [x] Implement Frontend (VueJS)
 - [ ] Implement Advanced Search
 - [ ] Implement History
 - [ ] Implement Order Calculator
@@ -29,4 +32,9 @@ npm start
 **21-06-2020**
 * Add status code into routes
 
+**24-06-2020**
+* Change API URI
+* Add CORS package
+* Change method to update and remove data on API
+* Implement VueJS + VueX with CRUD operation
 

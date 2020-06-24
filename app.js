@@ -3,13 +3,19 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const ordersRoute = require('./routes/orders');
+const cors = require('cors');
 require('dotenv/config');
+
+
+// use cors, to access localhost API (in development server)
+app.use(cors())
+app.options('*', cors());
 
 // to parse HTTP request
 app.use(bodyParser.json());
 
 // for routing
-app.use('/orders', ordersRoute);
+app.use('/api/v1/orders', ordersRoute);
 
 // connect to DB
 mongoose.connect(
@@ -20,4 +26,4 @@ mongoose.connect(
   } 
 );
 
-app.listen(5000);
+app.listen(5000, () => console.log('connected to port 5000'));

@@ -43,9 +43,9 @@ router.post('/', async(req, res) => {
 });
 
 // edit an order data
-router.put('/:orderId', async(req, res) => {
+router.patch('/:orderId', async(req, res) => {
   try {
-    const updatedOrder = await Order.updateOne(
+    const updatedOrder = await Order.findOneAndUpdate(
       {_id: req.params.orderId}, 
       { $set: 
         { 
@@ -56,7 +56,8 @@ router.put('/:orderId', async(req, res) => {
           menu_name: req.body.menu_name,
           quantity_ordered: req.body.quantity_ordered
         }
-      }
+      },
+      { "new": true}
     );
 
     res.json(updatedOrder);
@@ -68,7 +69,7 @@ router.put('/:orderId', async(req, res) => {
 // delete an order data
 router.delete('/:orderId', async(req, res) => {
   try {
-    const removedOrder = await Order.remove({_id: req.params.orderId});
+    const removedOrder = await Order.findOneAndRemove({_id: req.params.orderId});
     res.json(removedOrder);
   } catch (error) {
     res.status(404).json({ message: `Order with ID ${req.params.orderId} not found`});
