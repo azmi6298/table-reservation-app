@@ -29,9 +29,6 @@ export default {
     showModal (order) {
       this.$modal.show('modal-order', order);
     },
-    hideModal () {
-      this.$modal.hide('modal-order');
-    },
   },
   components: {
     ModalOrder
