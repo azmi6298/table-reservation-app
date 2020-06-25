@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col items-center">
-    <div class="flex flex-row space-x-10">
-      <div class="container bg-blue-500 p-16 rounded-full h-16 w-16" v-for="order in allOrders" :key="order.id">
+    <div class="flex flex-row grid grid-cols-4 gap-40">
+      <div class="bg-blue-500 p-16 rounded" v-for="order in allOrders" :key="order.id">
         <a href="/#new_order" @click.prevent="showModal(order)">
-          <p class="text-4xl">{{ order.table_name }}</p>
+          <p class="text-4xl font-bold">{{ order.table_name }}</p>
         </a>
       </div>
     </div>
@@ -27,11 +27,7 @@ export default {
   methods: {
     ...mapActions(['getOrders']),
     showModal (order) {
-      this.$modal.show('modal-order', order);
-      // this.$refs.modal.show(order)
-    },
-    hideModal () {
-      this.$modal.hide('modal-order');
+      this.$modal.show('modal-order', order)
     },
   },
   components: {
