@@ -51,8 +51,7 @@ export default {
     beforeOpen (event) {
       this.order = event.params
       if (this.order.quantity_ordered == undefined) {
-        this.order.quantity_ordered = 0 
-        console.log(this.order)
+        this.$set(this.order, 'quantity_ordered', 0)
       }
     },
     opened() {
@@ -81,10 +80,10 @@ export default {
       this.hideModal()
     },
     increment() {
-      return this.order.quantity_ordered += 1
+      this.order.quantity_ordered += 1
     },
     decrement() {
-      if (this.order.quantity_ordered > 0) return this.order.quantity_ordered -= 1
+      if (this.order.quantity_ordered > 0) this.order.quantity_ordered -= 1
     }
   },
   computed: {
@@ -104,7 +103,7 @@ export default {
         customer_name: '',
         employee_name: '',
         menu_name: '',
-        quantity_ordered: ''
+        quantity_ordered: 0
       },
       menus : [
         { value: 'rendang', text: 'Rendang'},

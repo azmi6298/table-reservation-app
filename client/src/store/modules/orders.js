@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Vue from 'vue'
 
-const url = 'http://localhost:5000/api/v1/orders/'
+const url = 'http://localhost:5001/api/v1/orders/'
 
 const state = { orders: [] }
 
