@@ -5,7 +5,7 @@
         <p class="text-2xl font-bold">{{ showTableName }}</p>
         <label class="material-icons text-red-600 font-extrabold" @click.prevent="hideModal">close</label>
       </div>
-      <form @submit.prevent="onSubmit" class="p-4 space-y-5">
+      <div class="p-4 space-y-5">
         <div class="flex flex-col">
           <label for="customer-name">Table</label>
           <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.table_name" @keydown.shift.tab.prevent="" ref="table_name" />
@@ -35,10 +35,10 @@
           </div>
         </div>
         <div class="flex flex-row justify-center space-x-10">
-          <t-button variant="primary" size="sm" type="submit">Save</t-button>
+          <t-button variant="primary" size="sm" @click="onSubmit">Save</t-button>
           <t-button variant="danger" size="sm" @keydown.tab.exact.prevent="" @click.prevent="removeReservation" v-if="order._id != undefined">Delete</t-button>
         </div>
-      </form>
+      </div>
     </modal>
   </div>
 </template>

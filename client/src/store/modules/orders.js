@@ -42,7 +42,7 @@ const mutations = {
   GET_ORDERS: (state, orders) => (state.orders = orders),
   UPDATE_ORDER: (state, updatedOrder) => {
     const index = state.orders.findIndex( order => order.id == updatedOrder.id)
-    Vue.set(state.orders, index, updatedOrder )
+    Vue.set(...state.orders, index, updatedOrder )
   },
   ADD_RESERVATION: (state, newData) => state.orders.push(newData),
   DELETE_RESERVATION: (state, deletedOrder) => {
