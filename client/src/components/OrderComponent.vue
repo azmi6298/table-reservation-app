@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center">
     <div class="grid grid-cols-4 gap-40">
         <a href="#" @click.prevent="showModal(order)" v-for="order in allOrders" :key="order.id">
-          <div class="bg-blue-500 p-16 rounded">
+          <div class="bg-blue-500 p-16 rounded w-48 flex justify-center">
             <p class="text-4xl font-bold">{{ order.table_name }}</p>
           </div>
         </a>
