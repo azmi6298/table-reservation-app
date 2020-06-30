@@ -45,6 +45,9 @@ export default {
   methods: {
     beforeOpen (event) {
       this.order = event.params
+       if (this.order.quantity_ordered == undefined) {
+        this.$set(this.order, 'quantity_ordered', 0)
+      }
     },
     opened() {
       this.$refs.table_name.focus()
@@ -89,7 +92,7 @@ export default {
         customer_name: '',
         employee_name: '',
         menu_name: '',
-        quantity_ordered: ''
+        quantity_ordered: 0
       },
     }
   }

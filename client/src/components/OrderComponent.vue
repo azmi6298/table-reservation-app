@@ -18,11 +18,8 @@ import ModalOrder from './ModalOrder'
 
 export default {
   name: 'OrderComponent',
-  computed: {
-    ...mapGetters(['allOrders']),
-  },
-  created() {
-    this.getOrders()
+  components: {
+    ModalOrder
   },
   methods: {
     ...mapActions(['getOrders']),
@@ -30,8 +27,11 @@ export default {
       this.$modal.show('modal-order', order);
     },
   },
-  components: {
-    ModalOrder
+  created() {
+    this.getOrders()
+  },
+  computed: {
+    ...mapGetters(['allOrders']),
   }
 }
 </script>
