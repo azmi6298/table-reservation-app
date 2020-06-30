@@ -22,13 +22,13 @@ export default {
     ModalOrder
   },
   methods: {
-    ...mapActions(['getOrders']),
+    ...mapActions(['getReservations']),
     showModal (order) {
       this.$modal.show('modal-order', order);
     },
   },
   created() {
-    this.getOrders()
+    this.getReservations()
   },
   computed: {
     ...mapGetters(['allOrders']),
