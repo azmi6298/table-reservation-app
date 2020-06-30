@@ -9,7 +9,7 @@
       </div>
       <div class="form-group">
         <label for="customer-name">Order Code</label>
-        <input type="text" v-model.lazy="order.code" @keydown.shift.tab.prevent="">
+        <input type="text" v-model.lazy="order.code">
       </div>
       <div class="form-group">
         <label for="customer-name">Customer Name</label>
@@ -56,7 +56,7 @@ export default {
       this.$modal.hide('modal-order')
     },
     ...mapActions(['updateOrderData', 'addReservation', 'deleteReservation']),
-    updateOrder() {
+    updateReservation() {
       this.updateOrderData(this.order)
     },
     addNewReservation() {
@@ -70,7 +70,7 @@ export default {
       if (this.order._id == undefined) {
         this.addNewReservation()
       } else {
-        this.updateOrder()
+        this.updateReservation()
       }
       this.hideModal()
     }
