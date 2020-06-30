@@ -19,7 +19,7 @@ const actions = {
       menu_name: orderData['menu_name'],
       quantity_ordered: orderData['quantity_ordered'],
     })
-    commit('UPDATE_ORDER', response.data)
+    commit('UPDATE_RESERVATION', response.data)
   },
   async addReservation({ commit }, orderData) {
     const response = await axios.post(url, {
@@ -40,7 +40,7 @@ const actions = {
 
 const mutations = {
   GET_ORDERS: (state, orders) => (state.orders = orders),
-  UPDATE_ORDER: (state, updatedOrder) => {
+  UPDATE_RESERVATION: (state, updatedOrder) => {
     const index = state.orders.findIndex( order => order.id == updatedOrder.id)
     Vue.set(state.orders, index, updatedOrder )
   },
