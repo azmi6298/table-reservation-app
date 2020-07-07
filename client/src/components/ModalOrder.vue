@@ -31,7 +31,7 @@
         <button type="submit">Save</button>
       </div>
       <div class="form-group">
-        <button @keydown.tab.exact.prevent="" @click.prevent="removeReservation" v-if="order._id != undefined">Delete</button>
+        <button @keydown.tab.exact.prevent="" @click.prevent="deleteReservation" v-if="order._id != undefined">Delete</button>
       </div>
      </form>
     </modal>
@@ -55,20 +55,20 @@ export default {
     hideModal() {
       this.$modal.hide('modal-order')
     },
-    ...mapActions(['updateOrderData', 'addReservation', 'deleteReservation']),
+    ...mapActions(['updateReservationData', 'addReservationData', 'deleteReservationData']),
     updateReservation() {
-      this.updateOrderData(this.order)
+      this.updateReservationData(this.order)
     },
-    addNewReservation() {
-      this.addReservation(this.order)
+    addReservation() {
+      this.addReservationData(this.order)
     },
-    removeReservation(){
-      this.deleteReservation(this.order._id)
+    deleteReservation(){
+      this.deleteReservationData(this.order._id)
       this.hideModal()
     },
     onSubmit() {
       if (this.order._id == undefined) {
-        this.addNewReservation()
+        this.addReservation()
       } else {
         this.updateReservation()
       }

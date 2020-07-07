@@ -10,7 +10,7 @@ const actions = {
     const response = await axios.get(url)
     commit('GET_RESERVATIONS', response.data)
   },
-  async updateOrderData({ commit }, orderData){
+  async updateReservationData({ commit }, orderData){
     const response = await axios.patch(`${url}${orderData['_id']}`, {
       code: orderData['code'],
       table_name: orderData['table_name'],
@@ -21,7 +21,7 @@ const actions = {
     })
     commit('UPDATE_RESERVATION', response.data)
   },
-  async addReservation({ commit }, orderData) {
+  async addReservationData({ commit }, orderData) {
     const response = await axios.post(url, {
       code: orderData['code'],
       table_name: orderData['table_name'],
@@ -32,7 +32,7 @@ const actions = {
     })
     commit('ADD_RESERVATION', response.data)
   },
-  async deleteReservation({ commit }, orderId) {
+  async deleteReservationData({ commit }, orderId) {
     const response = await axios.delete(`${url}${orderId}`)
     commit('DELETE_RESERVATION', response.data)
   }
