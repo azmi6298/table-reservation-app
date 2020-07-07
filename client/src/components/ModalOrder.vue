@@ -4,11 +4,11 @@
      <form @submit.prevent="onSubmit">
       <h1>{{ showTableName }}</h1>
       <div class="form-group">
-        <label for="customer-name">Table</label>
+        <label for="table-name">Table</label>
         <input type="text" v-model.lazy="order.table_name" @keydown.shift.tab.prevent="" ref="table_name">
       </div>
       <div class="form-group">
-        <label for="customer-name">Order Code</label>
+        <label for="order-code">Order Code</label>
         <input type="text" v-model.lazy="order.code">
       </div>
       <div class="form-group">
