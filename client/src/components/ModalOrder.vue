@@ -7,12 +7,12 @@
       </div>
       <div class="p-4 space-y-5">
         <div class="flex flex-col">
-          <label for="customer-name">Table</label>
+          <label for="table-name">Table</label>
           <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.table_name" @keydown.shift.tab.prevent="" ref="table_name" />
         </div>
         <div class="flex flex-col">
-          <label for="customer-name">Order Code</label>
-          <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.code" @keydown.shift.tab.prevent="" />
+          <label for="order-code">Order Code</label>
+          <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.code"/>
         </div>
         <div class="flex flex-col">
           <label for="customer-name">Customer Name</label>
@@ -60,22 +60,22 @@ export default {
     hideModal() {
       this.$modal.hide('modal-order')
     },
-    ...mapActions(['updateOrderData', 'addReservation', 'deleteReservation']),
-    updateOrder() {
-      this.updateOrderData(this.order)
+    ...mapActions(['updateReservationData', 'addReservationData', 'deleteReservationData']),
+    updateReservation() {
+      this.updateReservationData(this.order)
     },
-    addNewReservation() {
-      this.addReservation(this.order)
+    addReservation() {
+      this.addReservationData(this.order)
     },
-    removeReservation(){
-      this.deleteReservation(this.order._id)
+    deleteReservation(){
+      this.deleteReservationData(this.order._id)
       this.hideModal()
     },
     onSubmit() {
       if (this.order._id == undefined) {
-        this.addNewReservation()
+        this.addReservation()
       } else {
-        this.updateOrder()
+        this.updateReservation()
       }
       this.hideModal()
     },

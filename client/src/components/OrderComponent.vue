@@ -19,20 +19,20 @@ import ModalOrder from './ModalOrder'
 export default {
   title: 'Order Page',
   name: 'OrderComponent',
-  computed: {
-    ...mapGetters(['allOrders']),
-  },
-  created() {
-    this.getOrders()
+  components: {
+    ModalOrder
   },
   methods: {
-    ...mapActions(['getOrders']),
+    ...mapActions(['getReservations']),
     showModal (order) {
       this.$modal.show('modal-order', order == undefined? {} : order)
     },
   },
-  components: {
-    ModalOrder
+  created() {
+    this.getReservations()
+  },
+  computed: {
+    ...mapGetters(['allOrders']),
   }
 }
 </script>

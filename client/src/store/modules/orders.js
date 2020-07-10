@@ -6,11 +6,11 @@ const url = 'http://localhost:5001/api/v1/orders/'
 const state = { orders: [] }
 
 const actions = {
-  async getOrders({ commit }) {
+  async getReservations({ commit }) {
     const response = await axios.get(url)
-    commit('GET_ORDERS', response.data)
+    commit('GET_RESERVATIONS', response.data)
   },
-  async updateOrderData({ commit }, orderData){
+  async updateReservationData({ commit }, orderData){
     const response = await axios.patch(`${url}${orderData['_id']}`, {
       code: orderData['code'],
       table_name: orderData['table_name'],
@@ -19,9 +19,9 @@ const actions = {
       menu_name: orderData['menu_name'],
       quantity_ordered: orderData['quantity_ordered'],
     })
-    commit('UPDATE_ORDER', response.data)
+    commit('UPDATE_RESERVATION', response.data)
   },
-  async addReservation({ commit }, orderData) {
+  async addReservationData({ commit }, orderData) {
     const response = await axios.post(url, {
       code: orderData['code'],
       table_name: orderData['table_name'],
@@ -32,15 +32,15 @@ const actions = {
     })
     commit('ADD_RESERVATION', response.data)
   },
-  async deleteReservation({ commit }, orderId) {
+  async deleteReservationData({ commit }, orderId) {
     const response = await axios.delete(`${url}${orderId}`)
     commit('DELETE_RESERVATION', response.data)
   }
 }
 
 const mutations = {
-  GET_ORDERS: (state, orders) => (state.orders = orders),
-  UPDATE_ORDER: (state, updatedOrder) => {
+  GET_RESERVATIONS: (state, orders) => (state.orders = orders),
+  UPDATE_RESERVATION: (state, updatedOrder) => {
     const index = state.orders.findIndex( order => order.id == updatedOrder.id)
     Vue.set(...state.orders, index, updatedOrder )
   },
