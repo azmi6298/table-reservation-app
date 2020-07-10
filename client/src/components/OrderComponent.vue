@@ -7,7 +7,7 @@
         </a>
       </div>
     </div>
-    <button @click.prevent="showModal({})">Add New Table</button>
+    <button @click.prevent="showModal()">Add New Table</button>
     <ModalOrder />
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
   methods: {
     ...mapActions(['getReservations']),
     showModal (order) {
-      this.$modal.show('modal-order', order);
+      this.$modal.show('modal-order', order == undefined? {} : order)
     },
   },
   created() {
