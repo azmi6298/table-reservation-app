@@ -36,7 +36,7 @@
         </div>
         <div class="flex flex-row justify-center space-x-10">
           <t-button variant="primary" size="sm" @click="onSubmit">Save</t-button>
-          <t-button variant="danger" size="sm" @keydown.tab.exact.prevent="" @click.prevent="removeReservation" v-if="order._id != undefined">Delete</t-button>
+          <t-button variant="danger" size="sm" @keydown.tab.exact.prevent="" @click.prevent="deleteReservation" v-if="order._id != undefined">Delete</t-button>
         </div>
       </div>
     </modal>
