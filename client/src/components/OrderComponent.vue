@@ -7,7 +7,7 @@
           </div>
         </a>
     </div>
-    <t-button variant="success" class="mt-10" @click.prevent="showModal()">Add New Reservation</t-button>
+    <t-button variant="success" class="mt-10 font-semibold" @click.prevent="showModal()">Add New Reservation</t-button>
     <ModalOrder />
   </div>
 </template>
