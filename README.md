@@ -1,4 +1,5 @@
 # Table Reservation App
+![npm](https://img.shields.io/npm/v/express?label=express&logo=npm) ![npm](https://img.shields.io/npm/v/mongoose?label=mongoose&logo=npm) ![npm](https://img.shields.io/npm/v/vue?label=vue&logo=npm) ![GitHub last commit](https://img.shields.io/github/last-commit/azmi6298/table-reservation-app)
 
 > A table reservation app built on ExpressJS + VueJS.
 
@@ -10,7 +11,8 @@ npm install
 # to run ExpressJS server on port 5000, but you can change it in app.js
 npm start
 
-# to run VueJS
+# to run VueJS on development mode
+cd client
 npm run serve
 ```
 
