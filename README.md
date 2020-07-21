@@ -4,8 +4,9 @@
 > A table reservation app built on ExpressJS + VueJS.
 
 **Check out my Medium stories on how I built this app (in bahasa Indonesia :indonesia:)**
-[Membangun Aplikasi Reservasi Meja dengan MEVN — Bagian Pertama](https://medium.com/easyread/bagaimana-saya-membangun-aplikasi-reservasi-meja-dengan-mevn-bagian-pertama-eac108f266a3)
-[Membangun Aplikasi Reservasi Meja dengan MEVN — Bagian Kedua](https://medium.com/easyread/membangun-aplikasi-reservasi-meja-dengan-mevn-bagian-kedua-feabd7bd7b00)
+* [Membangun Aplikasi Reservasi Meja dengan MEVN — Bagian Pertama](https://medium.com/easyread/bagaimana-saya-membangun-aplikasi-reservasi-meja-dengan-mevn-bagian-pertama-eac108f266a3)
+* [Membangun Aplikasi Reservasi Meja dengan MEVN — Bagian Kedua](https://medium.com/easyread/membangun-aplikasi-reservasi-meja-dengan-mevn-bagian-kedua-feabd7bd7b00)
+* More to go ...
 
 ## How to use it?
 ```bash
