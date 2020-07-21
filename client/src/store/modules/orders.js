@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Vue from 'vue'
 
-const url = 'http://localhost:5000/api/v1/orders/'
+const url = 'http://localhost:5001/api/v1/orders/'
 
 const state = { orders: [] }
 
@@ -42,7 +42,7 @@ const mutations = {
   GET_RESERVATIONS: (state, orders) => (state.orders = orders),
   UPDATE_RESERVATION: (state, updatedOrder) => {
     const index = state.orders.findIndex( order => order.id == updatedOrder.id)
-    Vue.set(state.orders, index, updatedOrder )
+    Vue.set(...state.orders, index, updatedOrder )
   },
   ADD_RESERVATION: (state, newData) => state.orders.push(newData),
   DELETE_RESERVATION: (state, deletedOrder) => {

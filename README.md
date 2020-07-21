@@ -18,7 +18,7 @@ npm run serve
 
 ## Things to do
 - [x] Implement Frontend (VueJS)
-- [ ] Implement CSS with TailwindCSS
+- [x] Implement CSS with TailwindCSS
 - [ ] Implement Advanced Search
 - [ ] Implement History
 - [ ] Implement Order Calculator
@@ -40,4 +40,8 @@ npm run serve
 * Add CORS package
 * Change method to update and remove data on API
 * Implement VueJS + VueX with CRUD operation
+
+**29-06-2020**
+* Implement styling with Tailwind CSS
+* Add custom page title with Mixin
 

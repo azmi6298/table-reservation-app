@@ -1,39 +1,48 @@
 <template>
-  <div>
-    <modal name="modal-order" @before-open="beforeOpen" @opened="opened">
-     <form @submit.prevent="onSubmit">
-      <h1>{{ showTableName }}</h1>
-      <div class="form-group">
-        <label for="table-name">Table</label>
-        <input type="text" v-model.lazy="order.table_name" @keydown.shift.tab.prevent="" ref="table_name">
+  <div class="text-gray-900">
+    <modal name="modal-order" :width="600" :height="750" @before-open="beforeOpen" @opened="opened">
+      <div class="p-2 m-2 border-b border-gray-300 flex flex-row items-center justify-between">
+        <p class="text-2xl font-bold">{{ showTableName }}</p>
+        <label class="material-icons text-red-600 font-extrabold" @click.prevent="hideModal">close</label>
       </div>
-      <div class="form-group">
-        <label for="order-code">Order Code</label>
-        <input type="text" v-model.lazy="order.code">
+      <div class="p-4 space-y-5">
+        <div class="flex flex-col">
+          <label for="table-name">Table</label>
+          <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.table_name" @keydown.shift.tab.prevent="" ref="table_name" />
+        </div>
+        <div class="flex flex-col">
+          <label for="order-code">Order Code</label>
+          <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.code"/>
+        </div>
+        <div class="flex flex-col">
+          <label for="customer-name">Customer Name</label>
+          <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.customer_name" />
+        </div>
+        <div class="flex flex-col">
+          <label for="employee-name">Employee Name</label>
+          <t-input class="form-input border-blue-500 border-2 border-opacity-25" v-model.lazy="order.employee_name" />
+        </div>
+        <div class="flex flex-col">
+          <label for="menu-name">Menu to Order</label>
+          <t-select placeholder="Choose a menu" class="border-blue-500 border-2 border-opacity-25" name="menu-input" :options="menus" v-model.lazy="order.menu_name" />
+        </div>
+        <div class="flex flex-col">
+          <label for="quantity">Quantity</label>
+          <div class="flex">
+            <t-input class="flex-grow form-input border-blue-500 border-2 border-opacity-25" v-model="order.quantity_ordered" />
+            <button class="material-icons text-red-500 text-4xl ml-2" @click.prevent="decrement">remove_circle</button>
+            <button class="material-icons text-blue-500 text-4xl ml-2" @click.prevent="increment">add_circle</button>
+          </div>
+        </div>
+        <div class="flex flex-row justify-center space-x-10">
+          <t-button variant="primary" size="sm" @click="onSubmit" class="font-semibold">Save</t-button>
+          <t-button variant="danger" size="sm" @keydown.tab.exact.prevent="" 
+            @click.prevent="deleteReservation" v-if="order._id != undefined" 
+            class="font-semibold">
+            Delete
+          </t-button>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="customer-name">Customer Name</label>
-        <input type="text" v-model.lazy="order.customer_name">
-      </div>
-      <div class="form-group">
-        <label for="employee-name">Employee Name</label>
-        <input type="text" v-model.lazy="order.employee_name">
-      </div>
-      <div class="form-group">
-        <label for="menu-name">Menu to Order</label>
-        <input type="text" v-model.lazy="order.menu_name">
-      </div>
-      <div class="form-group">
-        <label for="quantity">Quantity</label>
-        <input type="text" v-model.lazy="order.quantity_ordered">
-      </div>
-      <div class="form-group">
-        <button type="submit">Save</button>
-      </div>
-      <div class="form-group">
-        <button @keydown.tab.exact.prevent="" @click.prevent="deleteReservation" v-if="order._id != undefined">Delete</button>
-      </div>
-     </form>
     </modal>
   </div>
 </template>
@@ -45,7 +54,7 @@ export default {
   methods: {
     beforeOpen (event) {
       this.order = event.params
-       if (this.order.quantity_ordered == undefined) {
+      if (this.order.quantity_ordered == undefined) {
         this.$set(this.order, 'quantity_ordered', 0)
       }
     },
@@ -73,6 +82,12 @@ export default {
         this.updateReservation()
       }
       this.hideModal()
+    },
+    increment() {
+      this.order.quantity_ordered += 1
+    },
+    decrement() {
+      if (this.order.quantity_ordered > 0) this.order.quantity_ordered -= 1
     }
   },
   computed: {
@@ -82,7 +97,7 @@ export default {
       } else {
         return "New Reservation"
       }
-    }
+    },
   },
   data() {
     return {
@@ -94,6 +109,11 @@ export default {
         menu_name: '',
         quantity_ordered: 0
       },
+      menus : [
+        { value: 'rendang', text: 'Rendang'},
+        { value: 'nasi goreng', text: 'Nasi Goreng'},
+        { value: 'bulgogi', text: 'Bulgogi'}
+      ]
     }
   }
 }

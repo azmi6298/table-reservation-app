@@ -1,13 +1,13 @@
 <template>
-  <div class="hello">
-    <div class="orders">
-      <div class="order" v-for="order in allOrders" :key="order.id">
-        <a href="/#new_order" @click.prevent="showModal(order)">
-          <p>{{ order.table_name }}</p>
+  <div class="flex flex-col items-center">
+    <div class="grid grid-cols-4 gap-40">
+        <a href="#" @click.prevent="showModal(order)" v-for="order in allOrders" :key="order.id">
+          <div class="bg-blue-500 p-16 rounded w-48 flex justify-center">
+            <p class="text-4xl font-bold">{{ order.table_name }}</p>
+          </div>
         </a>
-      </div>
     </div>
-    <button @click.prevent="showModal()">Add New Table</button>
+    <t-button variant="success" class="mt-10 font-semibold" @click.prevent="showModal()">Add New Reservation</t-button>
     <ModalOrder />
   </div>
 </template>
@@ -17,6 +17,7 @@ import { mapGetters, mapActions } from 'vuex'
 import ModalOrder from './ModalOrder'
 
 export default {
+  title: 'Order Page',
   name: 'OrderComponent',
   components: {
     ModalOrder
@@ -36,52 +37,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.orders {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
-}
-.order {
-  border: 1px solid #ccc;
-  background: #41b883;
-  padding: 1rem;
-  border-radius: 5px;
-  text-align: center;
-  position: relative;
-  cursor: pointer;
-}
-i {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  color: #fff;
-  cursor: pointer;
-}
-.legend {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1rem;
-}
-.complete-box {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background: #35495e;
-}
-.incomplete-box {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background: #41b883;
-}
-.is-complete {
-  background: #35495e;
-  color: #fff;
-}
-@media (max-width: 500px) {
-  .orders {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
+
